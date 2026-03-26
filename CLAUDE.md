@@ -32,6 +32,7 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 - **Security:** Spring Security + JWT (jjwt 0.12.x) — stateless, HMAC-SHA256
 - **Database:** PostgreSQL 16 (Docker) + Spring Data JPA (H2 for tests)
 - **Containerization:** Docker + Docker Compose
+- **Serverless:** AWS Lambda + API Gateway (via aws-serverless-java-container + SAM)
 - **Testing:** JUnit 5 + Spring Boot Test + Spring Security Test
 - **API Docs:** SpringDoc-OpenAPI (Swagger UI at `/swagger-ui.html`)
 - **Static Analysis:** SpotBugs + Find Security Bugs
@@ -41,6 +42,7 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 ```
 src/main/java/com/example/helloworld/
 ├── HelloWorldApplication.java    # @SpringBootApplication entry point
+├── StreamLambdaHandler.java      # AWS Lambda entry point (API Gateway → Spring)
 ├── HelloController.java          # @RestController with GET / (requires auth)
 └── auth/
     ├── config/
@@ -65,6 +67,7 @@ src/main/resources/
 ├── application.properties            # Shared config (JWT, port, active profile)
 ├── application-dev.properties        # PostgreSQL via Docker Compose
 ├── application-prod.properties       # PostgreSQL via environment variables
+├── application-lambda.properties     # PostgreSQL via RDS (Lambda deployment)
 src/test/resources/
 └── application-test.properties       # H2 in-memory for tests
 src/test/java/com/example/helloworld/
@@ -100,6 +103,18 @@ mvnw.cmd spotbugs:check       # Run SpotBugs static analysis + security scan
 ```
 
 JAVA_HOME must point to `C:\Program Files\Eclipse Adoptium\jdk-20.0.2.9-hotspot` (set at machine level).
+
+### AWS Lambda (serverless deployment)
+
+```cmd
+sam build                         # Build Lambda artifact from pom.xml
+sam deploy --guided               # Deploy to AWS (first time, interactive)
+sam deploy                        # Deploy to AWS (subsequent, uses samconfig.toml)
+sam local invoke                  # Smoke test locally with SAM CLI
+sam delete                        # Tear down the CloudFormation stack
+```
+
+Requires: AWS CLI configured, SAM CLI installed, RDS PostgreSQL instance pre-provisioned.
 
 ## API Endpoints
 
@@ -170,6 +185,6 @@ Configured in `.claude/settings.json`:
 - Swagger UI available at `http://localhost:8080/swagger-ui.html` when running
 - **JWT secret** is configured in `application.properties` via `jwt.secret` (Base64-encoded). App fails to start if missing.
 - **PostgreSQL** runs in Docker via `docker compose up`. Data persists in a named volume `pgdata`.
-- **Spring Profiles:** `dev` (default, Docker PostgreSQL), `prod` (env-var PostgreSQL), `test` (H2 in-memory)
+- **Spring Profiles:** `dev` (default, Docker PostgreSQL), `prod` (env-var PostgreSQL), `lambda` (RDS via SAM env vars), `test` (H2 in-memory)
 - Tests use the `test` profile with H2 — no Docker needed to run tests
 - GitHub MCP server needs a personal access token — replace `<your-github-token-here>` in `.claude/settings.json`

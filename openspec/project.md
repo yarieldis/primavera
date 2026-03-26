@@ -10,6 +10,7 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 - **Embedded Server:** Tomcat (via spring-boot-starter-web)
 - **Database:** PostgreSQL 16 (Docker) + Spring Data JPA (H2 for tests)
 - **Containerization:** Docker + Docker Compose
+- **Serverless:** AWS Lambda + API Gateway (via aws-serverless-java-container + SAM)
 - **Testing:** JUnit 5 + Spring Boot Test
 - **API Docs:** SpringDoc-OpenAPI (Swagger UI at `/swagger-ui.html`)
 - **Static Analysis:** SpotBugs + Find Security Bugs
@@ -62,7 +63,8 @@ This is a starter/template project. No specific business domain is implemented y
 - JAVA_HOME must point to `C:\Program Files\Eclipse Adoptium\jdk-20.0.2.9-hotspot`
 - App runs on port **8080** by default (configurable in `application.properties`)
 - Docker Desktop required to run the app (`docker compose up --build`)
-- Spring profiles: `dev` (Docker PostgreSQL), `prod` (env-var PostgreSQL), `test` (H2 in-memory)
+- Spring profiles: `dev` (Docker PostgreSQL), `prod` (env-var PostgreSQL), `lambda` (RDS via SAM), `test` (H2 in-memory)
+- Lambda deployment requires AWS CLI + SAM CLI + pre-provisioned RDS PostgreSQL
 - Tests run with H2 — no Docker needed for `mvnw.cmd test`
 
 ## External Dependencies
