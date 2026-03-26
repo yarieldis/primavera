@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Hello World Spring Boot API on Lambda
+
+Parameters:
+  DbHost:
+    Type: String
+    Description: RDS PostgreSQL endpoint
+  DbPort:
+    Type: String
+    Default: '5432'
+  DbName:
+    Type: String
+    Default: helloworld
+  DbUser:
+    Type: String
+  DbPassword:
+    Type: String
+    NoEcho: true
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: VPC subnet IDs for Lambda (same VPC as RDS)
+  SecurityGroupIds:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+    Description: Security group IDs allowing access to RDS
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+
+Resources:
+  HelloWorldApi:
+    Type: AWS::Serverless::HttpApi
+
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.example.helloworld.StreamLambdaHandler::handleRequest
+      Runtime: java21
+      CodeUri: .
+      SnapStart:
+        ApplyOn: PublishedVersions
+      AutoPublishAlias: live
+      Environment:
+        Variables:
+          SPRING_PROFILES_ACTIVE: lambda
+          DB_HOST: !Ref DbHost
+          DB_PORT: !Ref DbPort
+          DB_NAME: !Ref DbName
+          DB_USER: !Ref DbUser
+          DB_PASSWORD: !Ref DbPassword
+      VpcConfig:
+        SubnetIds: !Ref SubnetIds
+        SecurityGroupIds: !Ref SecurityGroupIds
+      Policies:
+        - VPCAccessPolicy: {}
+      Events:
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HelloWorldApi
+            Path: /
+            Method: ANY
+        ApiProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HelloWorldApi
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${HelloWorldApi}.execute-api.${AWS::Region}.amazonaws.com"

@@ -1,0 +1,15 @@
+# SAM CLI deployment defaults
+# Run 'sam deploy --guided' the first time to populate parameter overrides
+
+version = 0.1
+
+[default.build.parameters]
+use_container = false
+
+[default.deploy.parameters]
+stack_name = "helloworld-api"
+resolve_s3 = true
+s3_prefix = "helloworld-api"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
