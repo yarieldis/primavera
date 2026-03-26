@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "PreCommit": [
+      {
+        "command": "cd \"C:\\Users\\yarie\\source\\repos\\AI\\mytest\" && mvnw.cmd compile -q",
+        "description": "Verify project compiles before committing"
+      }
+    ]
+  },
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<your-github-token-here>"
+      }
+    },
+    "maven-tools": {
+      "command": "npx",
+      "args": ["-y", "maven-tools-mcp"]
+    }
+  }
+}

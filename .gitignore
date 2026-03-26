@@ -29,4 +29,6 @@ target/
 ### OS ###
 .DS_Store
 Thumbs.db
- .claude/settings.json
+
+### Claude Code ###
+.claude/settings.local.json
