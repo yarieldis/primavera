@@ -30,7 +30,8 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 - **Build Tool:** Maven (via Maven Wrapper, no global install needed)
 - **Embedded Server:** Tomcat (via spring-boot-starter-web)
 - **Security:** Spring Security + JWT (jjwt 0.12.x) — stateless, HMAC-SHA256
-- **Database:** H2 in-memory + Spring Data JPA
+- **Database:** PostgreSQL 16 (Docker) + Spring Data JPA (H2 for tests)
+- **Containerization:** Docker + Docker Compose
 - **Testing:** JUnit 5 + Spring Boot Test + Spring Security Test
 - **API Docs:** SpringDoc-OpenAPI (Swagger UI at `/swagger-ui.html`)
 - **Static Analysis:** SpotBugs + Find Security Bugs
@@ -61,7 +62,11 @@ src/main/java/com/example/helloworld/
         ├── CustomUserDetailsService.java  # UserDetailsService implementation
         └── AuthService.java          # Register and login business logic
 src/main/resources/
-└── application.properties        # App config, JWT, H2 datasource
+├── application.properties            # Shared config (JWT, port, active profile)
+├── application-dev.properties        # PostgreSQL via Docker Compose
+├── application-prod.properties       # PostgreSQL via environment variables
+src/test/resources/
+└── application-test.properties       # H2 in-memory for tests
 src/test/java/com/example/helloworld/
 ├── HelloWorldApplicationTests.java
 └── auth/
@@ -73,13 +78,23 @@ Base package: `com.example.helloworld`
 
 ## Build & Run Commands
 
+### Docker (preferred)
+
+```cmd
+docker compose up --build     # Build & start app + PostgreSQL
+docker compose down           # Stop containers (data persists in pgdata volume)
+docker compose down -v        # Stop containers and delete data
+```
+
+### Maven (local development)
+
 All commands use the Maven Wrapper (`mvnw.cmd`) from the project root:
 
 ```cmd
 mvnw.cmd compile              # Compile sources
-mvnw.cmd test                 # Run tests
+mvnw.cmd test                 # Run tests (uses H2, no Docker needed)
 mvnw.cmd package              # Build JAR → target/helloworld-0.0.1-SNAPSHOT.jar
-mvnw.cmd spring-boot:run      # Run the app (http://localhost:8080)
+mvnw.cmd spring-boot:run      # Run the app (needs a PostgreSQL instance)
 mvnw.cmd clean                # Clean build artifacts
 mvnw.cmd spotbugs:check       # Run SpotBugs static analysis + security scan
 ```
@@ -95,7 +110,7 @@ JAVA_HOME must point to `C:\Program Files\Eclipse Adoptium\jdk-20.0.2.9-hotspot`
 | POST   | `/api/auth/login` | Public | `{"token": "..."}` — login existing user |
 | GET    | `/swagger-ui.html` | Public | Swagger UI (auto-generated API docs) |
 | GET    | `/v3/api-docs` | Public | OpenAPI 3.0 JSON spec |
-| GET    | `/h2-console` | Public | H2 database console (dev only) |
+| GET    | `/h2-console` | Public | H2 database console (test profile only) |
 
 ### Authentication
 
@@ -154,7 +169,7 @@ Configured in `.claude/settings.json`:
 - The app runs on port **8080** by default (configurable in `application.properties`)
 - Swagger UI available at `http://localhost:8080/swagger-ui.html` when running
 - **JWT secret** is configured in `application.properties` via `jwt.secret` (Base64-encoded). App fails to start if missing.
-- **H2 console** available at `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:authdb`, user: `sa`, no password)
-- H2 is in-memory — data is lost on restart. Plan to migrate to PostgreSQL for persistence.
-- No profiles (dev/prod) are set up yet — add as needed
+- **PostgreSQL** runs in Docker via `docker compose up`. Data persists in a named volume `pgdata`.
+- **Spring Profiles:** `dev` (default, Docker PostgreSQL), `prod` (env-var PostgreSQL), `test` (H2 in-memory)
+- Tests use the `test` profile with H2 — no Docker needed to run tests
 - GitHub MCP server needs a personal access token — replace `<your-github-token-here>` in `.claude/settings.json`

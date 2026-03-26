@@ -8,6 +8,8 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 - **Language:** Java 20 (Eclipse Adoptium JDK 20.0.2)
 - **Build Tool:** Maven (via Maven Wrapper `mvnw.cmd`, no global install needed)
 - **Embedded Server:** Tomcat (via spring-boot-starter-web)
+- **Database:** PostgreSQL 16 (Docker) + Spring Data JPA (H2 for tests)
+- **Containerization:** Docker + Docker Compose
 - **Testing:** JUnit 5 + Spring Boot Test
 - **API Docs:** SpringDoc-OpenAPI (Swagger UI at `/swagger-ui.html`)
 - **Static Analysis:** SpotBugs + Find Security Bugs
@@ -59,8 +61,9 @@ This is a starter/template project. No specific business domain is implemented y
 ## Important Constraints
 - JAVA_HOME must point to `C:\Program Files\Eclipse Adoptium\jdk-20.0.2.9-hotspot`
 - App runs on port **8080** by default (configurable in `application.properties`)
-- No database or security dependencies are configured yet
-- No profiles (dev/prod) are set up yet
+- Docker Desktop required to run the app (`docker compose up --build`)
+- Spring profiles: `dev` (Docker PostgreSQL), `prod` (env-var PostgreSQL), `test` (H2 in-memory)
+- Tests run with H2 — no Docker needed for `mvnw.cmd test`
 
 ## External Dependencies
 - **SpringDoc-OpenAPI:** Auto-generates API documentation at `/swagger-ui.html` and `/v3/api-docs`
