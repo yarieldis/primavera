@@ -1,6 +1,6 @@
-package com.example.helloworld.auth.repository;
+package com.github.primavera.auth.repository;
 
-import com.example.helloworld.auth.entity.User;
+import com.github.primavera.auth.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

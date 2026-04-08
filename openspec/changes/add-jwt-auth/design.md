@@ -53,7 +53,7 @@ The project is a minimal Spring Boot 3.4.2 Hello World app with no authenticatio
 - **Why:** JWT tokens carry authentication state. No server-side session needed. CSRF protection is unnecessary for stateless token-based APIs (tokens aren't sent automatically by browsers like cookies).
 
 ### Package Structure
-- **Decision:** New `com.example.helloworld.auth` package with sub-packages: `config`, `controller`, `dto`, `entity`, `filter`, `repository`, `service`.
+- **Decision:** New `com.github.primavera.auth` package with sub-packages: `config`, `controller`, `dto`, `entity`, `filter`, `repository`, `service`.
 - **Why:** Groups all auth concerns under one feature package. Sub-packages follow standard Spring Boot layering within the feature. Easy to extract into a separate module later if needed.
 
 ### Public Endpoints

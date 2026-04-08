@@ -3,7 +3,7 @@
 - [x] 1.2 Add `maven-shade-plugin` to build an uber-JAR suitable for Lambda deployment
 
 ## 2. Lambda Handler
-- [x] 2.1 Create `StreamLambdaHandler.java` in `com.example.helloworld` — implements `RequestStreamHandler`, initializes `SpringBootLambdaContainerHandler`
+- [x] 2.1 Create `StreamLambdaHandler.java` in `com.github.primavera` — implements `RequestStreamHandler`, initializes `SpringBootLambdaContainerHandler`
 
 ## 3. Spring Profile for Lambda
 - [x] 3.1 Create `application-lambda.properties` — PostgreSQL via env vars (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`), `ddl-auto=update`, no H2 console

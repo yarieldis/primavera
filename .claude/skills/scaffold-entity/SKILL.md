@@ -8,7 +8,7 @@ Generates a JPA entity class with standard fields and configuration.
 Example: `/scaffold-entity Product name:String price:BigDecimal description:String active:boolean`
 
 ## What it creates
-Under `src/main/java/com/example/helloworld/`:
+Under `src/main/java/com/github/primavera/`:
 
 1. **`<entity>/model/<EntityName>.java`** — JPA `@Entity` with:
    - `@Id` with `@GeneratedValue(strategy = GenerationType.IDENTITY)`

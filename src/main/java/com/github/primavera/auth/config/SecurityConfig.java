@@ -1,6 +1,6 @@
-package com.example.helloworld.auth.config;
+package com.github.primavera.auth.config;
 
-import com.example.helloworld.auth.filter.JwtAuthenticationFilter;
+import com.github.primavera.auth.filter.JwtAuthenticationFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;

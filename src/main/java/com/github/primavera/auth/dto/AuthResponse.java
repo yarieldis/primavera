@@ -1,4 +1,4 @@
-package com.example.helloworld.auth.dto;
+package com.github.primavera.auth.dto;
 
 public class AuthResponse {
 

@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Hello World Spring Boot API on Lambda
+Description: Primavera Spring Boot API on Lambda
 
 Parameters:
   DbHost:
@@ -11,7 +11,7 @@ Parameters:
     Default: '5432'
   DbName:
     Type: String
-    Default: helloworld
+    Default: primavera
   DbUser:
     Type: String
   DbPassword:
@@ -30,13 +30,13 @@ Globals:
     MemorySize: 512
 
 Resources:
-  HelloWorldApi:
+  PrimaveraApi:
     Type: AWS::Serverless::HttpApi
 
-  HelloWorldFunction:
+  PrimaveraFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.example.helloworld.StreamLambdaHandler::handleRequest
+      Handler: com.github.primavera.StreamLambdaHandler::handleRequest
       Runtime: java21
       CodeUri: .
       SnapStart:
@@ -59,17 +59,17 @@ Resources:
         ApiRoot:
           Type: HttpApi
           Properties:
-            ApiId: !Ref HelloWorldApi
+            ApiId: !Ref PrimaveraApi
             Path: /
             Method: ANY
         ApiProxy:
           Type: HttpApi
           Properties:
-            ApiId: !Ref HelloWorldApi
+            ApiId: !Ref PrimaveraApi
             Path: /{proxy+}
             Method: ANY
 
 Outputs:
   ApiEndpoint:
     Description: API Gateway endpoint URL
-    Value: !Sub "https://${HelloWorldApi}.execute-api.${AWS::Region}.amazonaws.com"
+    Value: !Sub "https://${PrimaveraApi}.execute-api.${AWS::Region}.amazonaws.com"

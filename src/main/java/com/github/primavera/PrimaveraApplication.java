@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.github.primavera;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
@@ -12,9 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         scheme = "bearer",
         bearerFormat = "JWT"
 )
-public class HelloWorldApplication {
+public class PrimaveraApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloWorldApplication.class, args);
+        SpringApplication.run(PrimaveraApplication.class, args);
     }
 }

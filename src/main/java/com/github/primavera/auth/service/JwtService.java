@@ -1,4 +1,4 @@
-package com.example.helloworld.auth.service;
+package com.github.primavera.auth.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

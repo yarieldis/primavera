@@ -1,7 +1,7 @@
-package com.example.helloworld.auth.service;
+package com.github.primavera.auth.service;
 
-import com.example.helloworld.auth.entity.User;
-import com.example.helloworld.auth.repository.UserRepository;
+import com.github.primavera.auth.entity.User;
+import com.github.primavera.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

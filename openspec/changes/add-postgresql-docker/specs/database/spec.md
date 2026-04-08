@@ -29,7 +29,7 @@ The system SHALL support `dev`, `prod`, and `test` Spring profiles for environme
 
 #### Scenario: Dev profile uses Docker PostgreSQL
 - **WHEN** the application runs with the `dev` profile
-- **THEN** it SHALL connect to PostgreSQL at `db:5432/helloworld`
+- **THEN** it SHALL connect to PostgreSQL at `db:5432/primavera`
 
 #### Scenario: Prod profile uses environment variables
 - **WHEN** the application runs with the `prod` profile

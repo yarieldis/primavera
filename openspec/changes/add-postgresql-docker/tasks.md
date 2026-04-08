@@ -1,7 +1,7 @@
 ## 1. Dependencies & Configuration
 - [x] 1.1 Add `postgresql` driver dependency to `pom.xml`
 - [x] 1.2 Change `h2` dependency scope to `test`
-- [x] 1.3 Create `application-dev.properties` with PostgreSQL config (host=`db`, port=`5432`, db=`helloworld`, user/pass)
+- [x] 1.3 Create `application-dev.properties` with PostgreSQL config (host=`db`, port=`5432`, db=`primavera`, user/pass)
 - [x] 1.4 Create `application-prod.properties` with env-var-driven PostgreSQL config (`DB_HOST`, `DB_PORT`, etc.)
 - [x] 1.5 Create `application-test.properties` with current H2 config (copy from existing `application.properties`)
 - [x] 1.6 Update `application.properties` to set `spring.profiles.active=dev` and remove H2-specific config
@@ -17,7 +17,7 @@
 - [ ] 2.4 Verify `docker compose up --build` starts both containers and the app connects to PostgreSQL
 
 ## 3. Tests
-- [x] 3.1 Add `@ActiveProfiles("test")` to `AuthIntegrationTest` and `HelloWorldApplicationTests`
+- [x] 3.1 Add `@ActiveProfiles("test")` to `AuthIntegrationTest` and `PrimaveraApplicationTests`
 - [x] 3.2 Run `mvnw.cmd test` — confirm all existing tests pass with H2 (no Docker required)
 
 ## 4. Documentation

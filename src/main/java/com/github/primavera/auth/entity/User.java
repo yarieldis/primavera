@@ -1,4 +1,4 @@
-package com.example.helloworld.auth.entity;
+package com.github.primavera.auth.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

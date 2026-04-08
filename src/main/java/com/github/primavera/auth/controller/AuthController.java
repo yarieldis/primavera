@@ -1,9 +1,9 @@
-package com.example.helloworld.auth.controller;
+package com.github.primavera.auth.controller;
 
-import com.example.helloworld.auth.dto.AuthResponse;
-import com.example.helloworld.auth.dto.LoginRequest;
-import com.example.helloworld.auth.dto.RegisterRequest;
-import com.example.helloworld.auth.service.AuthService;
+import com.github.primavera.auth.dto.AuthResponse;
+import com.github.primavera.auth.dto.LoginRequest;
+import com.github.primavera.auth.dto.RegisterRequest;
+import com.github.primavera.auth.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

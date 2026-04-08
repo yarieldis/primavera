@@ -60,7 +60,7 @@
 - [x] 11.2 Integration tests for `POST /api/auth/register` (success, duplicate username, duplicate email, invalid input)
 - [x] 11.3 Integration tests for `POST /api/auth/login` (success, bad credentials, missing fields)
 - [x] 11.4 Integration tests for `GET /` (authenticated 200, unauthenticated 401, invalid token 401)
-- [x] 11.5 Update existing `HelloWorldApplicationTests` to work with security context
+- [x] 11.5 Update existing `PrimaveraApplicationTests` to work with security context
 
 ## 12. Configuration and Documentation
 - [x] 12.1 Add `jwt.secret` and `jwt.expiration-ms` to `application.properties`

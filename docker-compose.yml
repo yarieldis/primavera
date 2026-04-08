@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: helloworld
-      POSTGRES_USER: helloworld
-      POSTGRES_PASSWORD: helloworld
+      POSTGRES_DB: primavera
+      POSTGRES_USER: primavera
+      POSTGRES_PASSWORD: primavera
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:

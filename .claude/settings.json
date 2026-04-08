@@ -1,12 +1,5 @@
 {
-  "hooks": {
-    "PreCommit": [
-      {
-        "command": "cd \"C:\\Users\\yarie\\source\\repos\\AI\\mytest\" && mvnw.cmd compile -q",
-        "description": "Verify project compiles before committing"
-      }
-    ]
-  },
+  "hooks": {},
   "mcpServers": {
     "github": {
       "command": "npx",

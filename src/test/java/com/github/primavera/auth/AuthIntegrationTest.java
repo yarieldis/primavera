@@ -1,7 +1,7 @@
-package com.example.helloworld.auth;
+package com.github.primavera.auth;
 
-import com.example.helloworld.auth.dto.LoginRequest;
-import com.example.helloworld.auth.dto.RegisterRequest;
+import com.github.primavera.auth.dto.LoginRequest;
+import com.github.primavera.auth.dto.RegisterRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

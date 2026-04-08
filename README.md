@@ -1,4 +1,4 @@
-# Hello World API
+# Primavera API
 
 A production-ready Spring Boot REST API template with **JWT authentication**, **Docker containerization**, and **serverless deployment** options. Built as a foundational starter for microservices development.
 
@@ -6,7 +6,7 @@ A production-ready Spring Boot REST API template with **JWT authentication**, **
 
 ## 🎯 What This Project Provides
 
-This is **not** a simple "Hello World" — it's a fully-featured API skeleton with:
+This is a fully-featured API skeleton with:
 - Stateless JWT authentication (HMAC-SHA256) with user registration & login
 - Protected REST endpoints requiring Bearer tokens
 - Spring Security configuration with BCrypt password hashing
@@ -113,7 +113,7 @@ mvnw.cmd test
 
 # Build JAR file
 mvnw.cmd package
-# Output: target/helloworld-0.0.1-SNAPSHOT.jar
+# Output: target/primavera-0.0.1-SNAPSHOT.jar
 
 # Run the app locally
 mvnw.cmd spring-boot:run
@@ -128,10 +128,10 @@ mvnw.cmd clean
 ## 🏗️ Project Structure
 
 ```
-src/main/java/com/example/helloworld/
-├── HelloWorldApplication.java             # @SpringBootApplication entry point
+src/main/java/com/github/primavera/
+├── PrimaveraApplication.java              # @SpringBootApplication entry point
 ├── HelloController.java                   # Protected GET / endpoint
-├── StreamLambdaHandler.java              # AWS Lambda adapter (not committed)
+├── StreamLambdaHandler.java              # AWS Lambda adapter
 └── auth/                                  # Complete authentication module
     ├── config/
     │   └── SecurityConfig.java           # Spring Security + JWT chain
@@ -156,17 +156,17 @@ src/main/resources/
 ├── application.properties                 # Shared config (JWT secret, port, etc.)
 ├── application-dev.properties             # Docker PostgreSQL profile
 ├── application-prod.properties            # Production env-var PostgreSQL profile
-├── application-lambda.properties          # AWS Lambda/RDS profile (not committed)
+├── application-lambda.properties          # AWS Lambda/RDS profile
 └── application-test.properties            # H2 in-memory test profile
 
-src/test/java/com/example/helloworld/
-├── HelloWorldApplicationTests.java        # Spring Boot context load test
+src/test/java/com/github/primavera/
+├── PrimaveraApplicationTests.java         # Spring Boot context load test
 └── auth/
     ├── AuthIntegrationTest.java          # Full auth workflow tests (register → login → protected)
     └── JwtServiceTest.java               # JWT token operations unit tests
 ```
 
-**Base Package:** `com.example.helloworld`
+**Base Package:** `com.github.primavera`
 
 ## 💾 Database Options
 
@@ -315,7 +315,7 @@ Rapidly generate boilerplate for new features:
 ```
 
 ### Code Conventions
-- **Package Structure:** `com.example.helloworld` → group by feature as project grows
+- **Package Structure:** `com.github.primavera` → group by feature as project grows
 - **Injection:** Constructor injection preferred over field injection
 - **Controllers:** Keep thin, delegate business logic to `@Service` classes
 - **Configuration:** Use `application.properties` (not YAML)

@@ -11,11 +11,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.example</groupId>
-    <artifactId>helloworld</artifactId>
+    <groupId>com.github</groupId>
+    <artifactId>primavera</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>helloworld</name>
-    <description>Spring Boot Hello World</description>
+    <name>primavera</name>
+    <description>Spring Boot Primavera</description>
 
     <properties>
         <java.version>20</java.version>

@@ -52,9 +52,9 @@ The app is a Spring Boot 3.4.2 REST API with Spring Security + JWT, backed by Po
 - **Why:** Minimal footprint. The handler is the only Java code that knows about Lambda — everything else is standard Spring Boot.
 
 ```
-src/main/java/com/example/helloworld/
+src/main/java/com/github/primavera/
 ├── StreamLambdaHandler.java          # NEW — Lambda entry point
-├── HelloWorldApplication.java
+├── PrimaveraApplication.java
 ├── HelloController.java
 └── auth/...
 src/main/resources/

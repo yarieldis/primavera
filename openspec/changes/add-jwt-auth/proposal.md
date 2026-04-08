@@ -19,6 +19,6 @@ The application currently has no authentication or authorization. Any client can
 - Affected code:
   - `pom.xml` — new dependencies (spring-boot-starter-security, spring-boot-starter-data-jpa, spring-boot-starter-validation, h2, jjwt)
   - `application.properties` — JWT config, H2 datasource, H2 console
-  - New package `com.example.helloworld.auth` with sub-packages: config, controller, dto, entity, filter, repository, service
+  - New package `com.github.primavera.auth` with sub-packages: config, controller, dto, entity, filter, repository, service
   - `HelloController.java` — added `@SecurityRequirement` Swagger annotation; behavior changes (requires auth)
   - Test updates for authenticated requests

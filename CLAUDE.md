@@ -21,7 +21,7 @@ Keep this managed block so 'openspec update' can refresh the instructions.
 
 ## Project Overview
 
-Spring Boot Hello World application. Minimal REST API serving as a starting point for further development.
+Spring Boot Primavera application. Minimal REST API serving as a starting point for further development.
 
 ## Tech Stack
 
@@ -40,8 +40,8 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 ## Project Structure
 
 ```
-src/main/java/com/example/helloworld/
-├── HelloWorldApplication.java    # @SpringBootApplication entry point
+src/main/java/com/github/primavera/
+├── PrimaveraApplication.java     # @SpringBootApplication entry point
 ├── StreamLambdaHandler.java      # AWS Lambda entry point (API Gateway → Spring)
 ├── HelloController.java          # @RestController with GET / (requires auth)
 └── auth/
@@ -70,14 +70,14 @@ src/main/resources/
 ├── application-lambda.properties     # PostgreSQL via RDS (Lambda deployment)
 src/test/resources/
 └── application-test.properties       # H2 in-memory for tests
-src/test/java/com/example/helloworld/
-├── HelloWorldApplicationTests.java
+src/test/java/com/github/primavera/
+├── PrimaveraApplicationTests.java
 └── auth/
     ├── JwtServiceTest.java           # Unit tests for JWT operations
     └── AuthIntegrationTest.java      # Integration tests for auth + hello endpoint
 ```
 
-Base package: `com.example.helloworld`
+Base package: `com.github.primavera`
 
 ## Build & Run Commands
 
@@ -96,7 +96,7 @@ All commands use the Maven Wrapper (`mvnw.cmd`) from the project root:
 ```cmd
 mvnw.cmd compile              # Compile sources
 mvnw.cmd test                 # Run tests (uses H2, no Docker needed)
-mvnw.cmd package              # Build JAR → target/helloworld-0.0.1-SNAPSHOT.jar
+mvnw.cmd package              # Build JAR → target/primavera-0.0.1-SNAPSHOT.jar
 mvnw.cmd spring-boot:run      # Run the app (needs a PostgreSQL instance)
 mvnw.cmd clean                # Clean build artifacts
 mvnw.cmd spotbugs:check       # Run SpotBugs static analysis + security scan
@@ -171,7 +171,7 @@ Configured in `.claude/settings.json`:
 ## Code Conventions
 
 - Follow standard Spring Boot patterns: `@RestController` for REST endpoints, `@Service` for business logic, `@Repository` for data access
-- Package structure under `com.example.helloworld` — group by feature as the project grows
+- Package structure under `com.github.primavera` — group by feature as the project grows
 - Use constructor injection over field injection
 - Keep controllers thin — delegate logic to service classes
 - Tests go in the mirror package under `src/test/java`

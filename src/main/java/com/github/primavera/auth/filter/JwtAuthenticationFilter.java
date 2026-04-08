@@ -1,6 +1,6 @@
-package com.example.helloworld.auth.filter;
+package com.github.primavera.auth.filter;
 
-import com.example.helloworld.auth.service.JwtService;
+import com.github.primavera.auth.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

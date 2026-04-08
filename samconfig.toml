@@ -7,9 +7,9 @@ version = 0.1
 use_container = false
 
 [default.deploy.parameters]
-stack_name = "helloworld-api"
+stack_name = "primavera-api"
 resolve_s3 = true
-s3_prefix = "helloworld-api"
+s3_prefix = "primavera-api"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true

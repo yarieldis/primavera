@@ -1,10 +1,10 @@
-package com.example.helloworld.auth.service;
+package com.github.primavera.auth.service;
 
-import com.example.helloworld.auth.dto.AuthResponse;
-import com.example.helloworld.auth.dto.LoginRequest;
-import com.example.helloworld.auth.dto.RegisterRequest;
-import com.example.helloworld.auth.entity.User;
-import com.example.helloworld.auth.repository.UserRepository;
+import com.github.primavera.auth.dto.AuthResponse;
+import com.github.primavera.auth.dto.LoginRequest;
+import com.github.primavera.auth.dto.RegisterRequest;
+import com.github.primavera.auth.entity.User;
+import com.github.primavera.auth.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;

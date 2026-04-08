@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.github.primavera;
 
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.model.HttpApiV2ProxyRequest;
@@ -17,7 +17,7 @@ public class StreamLambdaHandler implements RequestStreamHandler {
 
     static {
         try {
-            handler = SpringBootLambdaContainerHandler.getHttpApiV2ProxyHandler(HelloWorldApplication.class);
+            handler = SpringBootLambdaContainerHandler.getHttpApiV2ProxyHandler(PrimaveraApplication.class);
         } catch (ContainerInitializationException e) {
             throw new RuntimeException("Could not initialize Spring Boot application", e);
         }

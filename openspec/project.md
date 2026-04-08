@@ -1,7 +1,7 @@
 # Project Context
 
 ## Purpose
-Spring Boot Hello World application. Minimal REST API serving as a starting point for further development. The project provides a foundational template for building Spring Boot microservices.
+Spring Boot Primavera application. Minimal REST API serving as a starting point for further development. The project provides a foundational template for building Spring Boot microservices.
 
 ## Tech Stack
 - **Framework:** Spring Boot 3.4.2
@@ -19,7 +19,7 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 
 ### Code Style
 - Follow standard Spring Boot patterns
-- Base package: `com.example.helloworld`
+- Base package: `com.github.primavera`
 - Use constructor injection over field injection
 - Keep controllers thin — delegate logic to service classes
 - Use `ResponseEntity<>` return types in controllers
@@ -30,7 +30,7 @@ Spring Boot Hello World application. Minimal REST API serving as a starting poin
 - `@RestController` for REST endpoints
 - `@Service` for business logic
 - `@Repository` for data access
-- Package structure under `com.example.helloworld` — group by feature as the project grows
+- Package structure under `com.github.primavera` — group by feature as the project grows
 - Single-file implementations until proven insufficient
 - Default to <100 lines of new code per change
 
